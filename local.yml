@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: your_database_name
+      MYSQL_USER: your_database_user
+      MYSQL_PASSWORD: your_database_password
+      MYSQL_ROOT_PASSWORD: your_root_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db.sql:/docker-entrypoint-initdb.d/start.sql
+    ports:
+      - 3306:3306
+    networks:
+      - app-network
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: your_root_password
+    ports:
+      - 8081:80
+    networks:
+      - app-network
+  php:
+    build: 
+      context: .
+      dockerfile: ./php.Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: php -S 0.0.0.0:80 -t .
+    ports:
+      - 8080:80
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  db_data:
