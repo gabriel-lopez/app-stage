@@ -42,20 +42,34 @@ if (isset($_GET['code'])) {
     $data['loginError'] = $result['errorMessage'];
   }
 
+  $username = '';
+  $is_admin = 0;
+
+  if (array_key_exists('username', $result)) {
+    $username = $result['username'];
+  }
+
+  if (array_key_exists('is_admin', $result)) {
+    $is_admin = $result['is_admin'];
+  }
+
   // Check if user exists in the database
-  $userExists = $userController->checkUserExists($result['username']);
+  $userExists = $userController->checkUserExists($username);
   if ($userExists) {
-    $_SESSION['username'] = $result['username'];
-    $_SESSION['is_admin'] = $result['is_admin'];
+    $_SESSION['username'] = $username;
+    $_SESSION['is_admin'] = $is_admin;
   } else {
     $jitEnabled = $settingController->getSetting('jit_enabled');
     if ($jitEnabled) {
       // JIT is enabled, create user
-      $created = $userController->createUser($result['username']);
+      $created = $userController->createUser($username);
 
       if($created) {
-        $_SESSION['username'] = $result['username'];
+        $_SESSION['username'] = $username;
       }
+    } else  {
+      $_SESSION['username'] = $username;
+      $_SESSION['is_admin'] = $is_admin;
     }
   }
 }

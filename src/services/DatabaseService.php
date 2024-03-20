@@ -35,7 +35,7 @@ class DatabaseService
     }
 
     # Check if table settings exists
-    $this->importSqlFileIfTableNotExists('settings', '../db.sql');
+    $this->importSqlFileIfTableNotExists('settings', './db.sql');
   }
 
   public function register_user($inputs)
@@ -305,7 +305,7 @@ class DatabaseService
     // Check if table exists
     if (!$this->tableExists($tableName)) {
         // Read SQL file
-        $query = file_get_contents($sqlFilePath);
+        $query = file_get_contents($sqlFilePath, true);
 
         // Execute SQL file
         $result = mysqli_multi_query($this->link, $query);
@@ -315,6 +315,8 @@ class DatabaseService
         } else {
             echo "Error importing SQL file: " . mysqli_error($this->link);
         }
+
+        die();
     }
   }
 }

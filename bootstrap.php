@@ -3,8 +3,8 @@ require 'vendor/autoload.php';
 use Dotenv\Dotenv;
 
 # DEV ONLY
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+//$dotenv = Dotenv::createImmutable(__DIR__);
+//$dotenv->load();
 
 session_start();
 

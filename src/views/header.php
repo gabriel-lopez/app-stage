@@ -23,9 +23,9 @@
             <?php echo $_SESSION['username'] ?>
           </p>
           <p>
-            <a href="/">Home</a> | 
+            <a href="/">Home</a> <span aria-hidden="true">|</span>
             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
-              echo '<a href="/?settings">Settings</a> | ';
+              echo '<a href="/?settings">Settings</a> <span aria-hidden="true">|</span>';
             } ?>
             <a href="/?logout">Log Out</a></p>
         <?php
@@ -38,7 +38,7 @@
               $sso_only = $data['settings']['sso_only'];
 
               if($sso_only == '0') {
-                echo '<a href="/?login">Log In</a> |';
+                echo '<a href="/?login">Log In</a> <span aria-hidden="true">|</span>';
               }
             }
             ?>
@@ -47,11 +47,11 @@
               $sso_enabled = $data['settings']['oauth_enabled'];
 
               if($sso_enabled == 'on') {
-                echo '<a href="/?sso">Log In SSO</a><!-- | -->';
+                echo '<a href="/?sso">Log In SSO</a>';
               }
             }
             ?>
-            <!-- <a href="/?forgot">Forgot Password</a> | -->
+            <!-- <a href="/?forgot">Forgot Password</a> <span aria-hidden="true">|</span> -->
           </p>
           <?php
         }

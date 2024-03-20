@@ -94,7 +94,7 @@
         <div class="columns">
           <div class="column">
             <input type="hidden" name="command" value="settings">
-            <button class="button is-primary">Update</button>
+            <button class="button is-primary">Update Settings</button>
           </div>
         </div>
       </form>
@@ -116,7 +116,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tfoot>
+        <tfoot aria-hidden="true">
           <tr>
             <th>ID</th>
             <th>First Name</th>
@@ -143,7 +143,7 @@
               echo "<td>" . $user['id'] . "</td>";
               echo '<td><input class="input" type="text" name="first_name" id="first_name" placeholder="" value="' . $user['first_name'] . '"></td>';
               echo '<td><input class="input" type="text" name="last_name" id="last_name" placeholder="" value="' . $user['last_name'] . '"></td>';
-              echo "<td>" . $user['email'] . "</td>";
+              echo '<td>' . $user['email'] . '</td>';
               echo '<td><input type="checkbox" name="has_password" disabled';
               if ($user['password']) {
                 echo ' checked';
@@ -164,12 +164,12 @@
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><button class="button is-primary">Update</button>';
+              echo '<td><button class="button is-primary">Update User</button>';
               echo "</form>";
               echo '<form action="/?settings" method="POST">';
               echo '<input type="hidden" name="command" value="deleteUser">';
               echo '<input type="hidden" name="userId" value="' . $user['id'] . '">';
-              echo '<button class="button is-danger">Delete</button>';
+              echo '<button class="button is-danger">Delete User</button>';
               echo '</form></td>';
               echo "</tr>";
             }
@@ -252,7 +252,7 @@
         <input type="hidden" name="command" value="newUser">
 
         <div class="control">
-          <button class="button is-link">Create</button>
+          <button class="button is-link">Create User</button>
         </div>
       </form>
       <?php
