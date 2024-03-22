@@ -103,7 +103,7 @@
       <h2 class="subtitle">User list</h2>
 
       <table class="table">
-        <thead>
+        <thead aria-hidden="true">
           <tr>
             <th>ID</th>
             <th>First Name</th>
@@ -144,22 +144,22 @@
               echo '<td><input class="input" type="text" name="first_name" id="first_name" placeholder="" value="' . $user['first_name'] . '"></td>';
               echo '<td><input class="input" type="text" name="last_name" id="last_name" placeholder="" value="' . $user['last_name'] . '"></td>';
               echo '<td>' . $user['email'] . '</td>';
-              echo '<td><input type="checkbox" name="has_password" disabled';
+              echo '<td><label for="has_password">Has Password</label><input type="checkbox" name="has_password" id="has_password" disabled';
               if ($user['password']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><input type="checkbox" name="jit_created" disabled';
+              echo '<td><label for="jit_created">JIT Created</label><input type="checkbox" name="jit_created" id="jit_created" disabled';
               if ($user['jit_created']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><input type="checkbox" name="sso_only" disabled';
+              echo '<td><label for="sso_only">SSO Only</label><input type="checkbox" name="sso_only" id="sso_only" disabled';
               if ($user['sso_only']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><input type="hidden" value="0" name="is_admin"><input type="checkbox" name="is_admin"';
+              echo '<td><input type="hidden" value="0" name="is_admin"><label for="is_admin">Is Administrator</label><input type="checkbox" name="is_admin" id="is_admin"';
               if ($user['is_admin']) {
                 echo ' checked';
               }
