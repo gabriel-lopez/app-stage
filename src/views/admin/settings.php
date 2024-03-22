@@ -141,25 +141,25 @@
               echo '<input type="hidden" name="userId" value="' . $user['id'] . '">';
               echo "<tr>";
               echo "<td>" . $user['id'] . "</td>";
-              echo '<td><input class="input" type="text" name="first_name" id="first_name" placeholder="" value="' . $user['first_name'] . '"></td>';
-              echo '<td><input class="input" type="text" name="last_name" id="last_name" placeholder="" value="' . $user['last_name'] . '"></td>';
+              echo '<td><label for="first_name' . $user['id'] . '" class="label">First Name</label><input class="input" type="text" name="first_name" id="first_name' . $user['id'] . '" placeholder="" value="' . $user['first_name'] . '"></td>';
+              echo '<td><label for="last_name' . $user['id'] . '" class="label">Last Name</label><input class="input" type="text" name="last_name" id="last_name' . $user['id'] . '" placeholder="" value="' . $user['last_name'] . '"></td>';
               echo '<td>' . $user['email'] . '</td>';
-              echo '<td><label for="has_password">Has Password</label><input type="checkbox" name="has_password" id="has_password" disabled';
+              echo '<td><label for="has_password' . $user['id'] . '">Has Password</label><input type="checkbox" name="has_password" id="has_password' . $user['id'] . '" disabled';
               if ($user['password']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><label for="jit_created">JIT Created</label><input type="checkbox" name="jit_created" id="jit_created" disabled';
+              echo '<td><label for="jit_created' . $user['id'] . '">JIT Created</label><input type="checkbox" name="jit_created" id="jit_created' . $user['id'] . '" disabled';
               if ($user['jit_created']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><label for="sso_only">SSO Only</label><input type="checkbox" name="sso_only" id="sso_only" disabled';
+              echo '<td><label for="sso_only' . $user['id'] . '">SSO Only</label><input type="checkbox" name="sso_only" id="sso_only' . $user['id'] . '" disabled';
               if ($user['sso_only']) {
                 echo ' checked';
               }
               echo '></td>';
-              echo '<td><input type="hidden" value="0" name="is_admin"><label for="is_admin">Is Administrator</label><input type="checkbox" name="is_admin" id="is_admin"';
+              echo '<td><input type="hidden" value="0" name="is_admin"><label for="is_admin' . $user['id'] . '">Is Administrator</label><input type="checkbox" name="is_admin" id="is_admin' . $user['id'] . '"';
               if ($user['is_admin']) {
                 echo ' checked';
               }
@@ -195,57 +195,57 @@
         ?>
 
         <div class="field">
-          <label class="label">Is Administrator</label>
+          <label for="add_is_user" class="label">Is Administrator</label>
           <div class="control">
-            <input type="checkbox" name="is_admin">
+            <input type="checkbox" name="is_admin" id="add_is_user">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">SSO Only</label>
+          <label for="add_sso_only" class="label">SSO Only</label>
           <div class="control">
-            <input type="checkbox" name="sso_only">
+            <input type="checkbox" name="sso_only" id="add_sso_only">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">First Name</label>
+          <label for="add_first_name" class="label">First Name</label>
           <div class="control">
-            <input class="input" name="first_name" type="text" value="<?php if ($data && isset($data['input'])) {
+            <input class="input" name="first_name" id="add_first_name" type="text" value="<?php if ($data && isset($data['input'])) {
               echo $data['input']['first_name'];
             } ?>">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Last Name</label>
+          <label for="add_last_name" class="label">Last Name</label>
           <div class="control">
-            <input class="input" name="last_name" type="text" value="<?php if ($data && isset($data['input'])) {
+            <input class="input" name="last_name" id="add_last_name" type="text" value="<?php if ($data && isset($data['input'])) {
               echo $data['input']['last_name'];
             } ?>">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Email</label>
+          <label for="add_email" class="label">Email</label>
           <div class="control">
-            <input class="input" name="email" type="email" value="<?php if ($data && isset($data['input'])) {
+            <input class="input" name="email" if="add_email" type="email" value="<?php if ($data && isset($data['input'])) {
               echo $data['input']['email'];
             } ?>">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Password</label>
+          <label for="add_password" class="label">Password</label>
           <div class="control">
-            <input class="input" name="password" type="password" value="">
+            <input class="input" name="password" id="add_password" type="password" value="">
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Repeat Password</label>
+          <label for="add_repeat_password" class="label">Repeat Password</label>
           <div class="control">
-            <input class="input" name="repeat_password" type="password" value="">
+            <input class="input" name="repeat_password" id="add_repeat_password" type="password" value="">
           </div>
         </div>
 
